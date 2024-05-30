@@ -5,7 +5,7 @@ grname = ""
 top = ""
 grammar = {}
 
-itermax = 5
+itermax = 10
 
 def flatten(lista, delimeter):
     flatstr = ""
@@ -27,7 +27,7 @@ def evaluate(grammar, tok, itern, itermax):
             tokens[i] = evaluate(grammar, tokens[i][1:], itern + 1, itermax)
     return tokens
 
-with open("grammar.txt") as f:
+with open("pkp.txt") as f:
     for line in f:
         # todo: chomp line
         if line[0] == "#": # comment

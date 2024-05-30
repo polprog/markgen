@@ -1,0 +1,63 @@
+GRAMMAR pkp
+OUTPUT MESSAGE
+
+MESSAGE = $TRAIN $VERB $WAGONS . $INFO
+
+TRAIN = $TR-ADJ Pociąg $OPER $TYPE ze stacji $CITY do stacji $CITY
+
+OPER = Intercity
+OPER = Express Intercity Premium
+OPER = Kolei Dolnośląskich
+OPER = Łódzkiej Kolei Aglomeracyjnej
+OPER = SKM
+
+TYPE = ŁKA Sprinter
+TYPE = S1
+TYPE = S2
+TYPE = S3
+TYPE = S9
+
+CITY = Warszawa Zachodnia
+CITY = Warszawa Centralna
+CITY = Warszawa Wschodnia
+CITY = Żyrardów
+CITY = Pruszków
+CITY = Zielonka
+CITY = Grodzisk Mazowiecki
+
+TR-ADJ = Opóżniony
+TR-ADJ = Przyśpieszony
+
+VERB = przyjedzie z opóźnieniem $DELAY-MIN
+VERB = wjedzie na tor $TRACK przy peronie $PLATFORM
+
+TRACK = $NUMBER
+PLATFORM = $NUMBER
+
+NUMBER = 1
+NUMBER = 2
+NUMBER = 3
+NUMBER = 4
+NUMBER = 5
+NUMBER = 6
+NUMBER = 7
+NUMBER = 8
+NUMBER = 9
+NUMBER = 0
+NUMBER = $NUMBER $NUMBER
+
+
+
+DELAY-MIN = 5 minut
+DELAY-MIN = 10 minut
+DELAY-MIN = 20 minut
+DELAY-MIN = 25 minut
+DELAY-MIN = 30 minut
+DELAY-MIN = 60 minut
+DELAY-MIN = 120 minut
+
+WAGONS = Wagony numer $NUMBER , $NUMBER , $NUMBER znajdują się w sektorze X $WAGONS .
+WAGONS = 
+
+INFO = Przesyłki konduktorskie przyjmuje i wydaje kierownik pociągu w wagonie numer $NUMBER
+INFO = Pociąg jest objęty obowiązkową rezerwacją miejsc
