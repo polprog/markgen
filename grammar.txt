@@ -1,0 +1,52 @@
+# This is a comment
+# This file defines example-tiny grammar
+GRAMMAR example-tiny tiny example
+# The top node of the tree will be the output message
+OUTPUT MESSAGE
+# The tree structure now follows
+# The message can be any of these with an equal probability
+# $TOKEN is another random token
+MESSAGE = Następny przystanek $STOP . $REQUEST 
+MESSAGE = Przystanek $STOP
+MESSAGE = Uwaga. Kurs skrócony. Ostatni przystanek $STOP
+
+# Experiment in self referencing
+#MESSAGE = Trasa $TRASA
+#TRASA = $STOP , $STOP , $STOP , $TRASA
+# Adjust the weights a bit - keep the program simple
+#TRASA = $STOP , $STOP , $TRASA
+#TRASA = $STOP , $STOP , $TRASA
+#TRASA = $STOP , $STOP , $TRASA
+#TRASA = $STOP , $STOP , $TRASA
+#TRASA = $STOP , $STOP , $TRASA
+#TRASA = 
+
+# Stop node can have some leaves. These are picked at random
+STOP = Wołoska
+STOP = Park Dreszera
+STOP = Centrum
+STOP = Krucza
+STOP = Metro Politechnika
+STOP = Główny Urząd Statystyczny
+STOP = Hoża
+STOP = Gwiaździsta
+STOP = Rondo ONZ
+STOP = Szpital wolski
+STOP = PKP Wola
+STOP = Orląt Lwowskich
+STOP = Stalowa
+STOP = Os.Górczewska
+STOP = Rondo Daszyńskiego
+STOP = Rondo Daszyńskiego
+STOP = Karolkowa
+STOP = Szpital Wolski
+STOP = PKP Wola (Kasprzaka)
+STOP = Ordona-Wsa
+STOP = Reduta Wolska
+STOP = Sowińskiego
+STOP = Fort Wola
+STOP = P+R Połczyńska
+STOP = Ciepłownia Wola
+# Empty string
+REQUEST =
+REQUEST = Przystanek na żądanie.
