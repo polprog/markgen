@@ -4,7 +4,6 @@ import sys
 with open('routes.pkl', 'rb') as handle:
     routes = pickle.load(handle)
 
-print(routes["2"])
 
 
 # Implement a markov process, we store the probability of going from A to B
@@ -25,7 +24,7 @@ for k,v in routes.items():
     else:
         probs["BEGIN"][v[0]] += 1
     last_stop = v[0]
-    for stop in v[1:-1]:
+    for stop in v[1:]:
         if last_stop not in probs:
             probs[last_stop] = {}
         if stop not in probs[last_stop]:
@@ -34,9 +33,12 @@ for k,v in routes.items():
             probs[last_stop][stop] += 1
         last_stop = stop
     # Write the end token
-    if last_stop not in probs["TERMINATE"]:
-        probs["TERMINATE"][last_stop] = 1
+    if last_stop not in probs:
+        probs[last_stop] = {}
+    if "TERMINATE" not in probs[last_stop]:
+        probs[last_stop]["TERMINATE"] = 1
     else:
-        probs["TERMINATE"][last_stop] += 1
+        probs[last_stop]["TERMINATE"] = 1  # We dont want to have so many possibilities to terminate the stop
 
-    
+with open('probabilities.pkl', 'wb') as handle:
+    routes = pickle.dump(probs, handle)
